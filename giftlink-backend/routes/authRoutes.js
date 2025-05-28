@@ -16,10 +16,10 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 router.post('/register', async (req, res) => {
     try {
-        // Task 1: Connect to `giftsdb` in MongoDB through `connectToDatabase` in `db.js`
+     
         const db = await connectToDatabase();
 
-        // Task 2: Access MongoDB collection
+      
         const collection = db.collection("users");
 
         //Task 3: Check for existing email
@@ -29,7 +29,7 @@ router.post('/register', async (req, res) => {
         const hash = await bcryptjs.hash(req.body.password, salt);
         const email = req.body.email;
 
-        //Task 4: Save user details in database
+      
         const newUser = await collection.insertOne({
             email: req.body.email,
             firstName: req.body.firstName,
